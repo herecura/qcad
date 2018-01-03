@@ -7,7 +7,7 @@
 
 pkgname=qcad
 pkgver=3.19.2.0
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='A 2D CAD package based upon Qt'
 arch=('x86_64')
 url="http://www.qcad.org"
@@ -49,36 +49,38 @@ package() {
   install -Dm644 readme.txt "$pkgdir"/usr/lib/qcad/readme.txt
 
   # qt
-  install -dm755 "$pkgdir"/usr/lib/qcad/plugins/{designer,imageformats,printsupport,sqldrivers}
-  for sofiles in /usr/lib/qt/plugins/designer/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/designer/${sofiles##/*/}
-  done
-  for sofiles in /usr/lib/qt/plugins/imageformats/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/imageformats/${sofiles##/*/}
-  done
-  for sofiles in /usr/lib/qt/plugins/printsupport/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/printsupport/${sofiles##/*/}
-  done
-  for sofiles in /usr/lib/qt/plugins/sqldrivers/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/sqldrivers/${sofiles##/*/}
-  done
-  install -dm755 "$pkgdir"/usr/lib/qcad/{platforminputcontexts,platforms,xcbglintegrations}
-  for sofiles in /usr/lib/qt/plugins/platforminputcontexts/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/platforminputcontexts/${sofiles##/*/}
-  done
-  for sofiles in /usr/lib/qt/plugins/platforms/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/platforms/${sofiles##/*/}
-  done
-  for sofiles in /usr/lib/qt/plugins/xcbglintegrations/*.so
-  do
-    ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/xcbglintegrations/${sofiles##/*/}
-  done
+  cp -r plugins platforminputcontexts platforms xcbglintegrations \
+      "$pkgdir"/usr/lib/qcad
+  #install -dm755 "$pkgdir"/usr/lib/qcad/plugins/{designer,imageformats,printsupport,sqldrivers}
+  #for sofiles in /usr/lib/qt/plugins/designer/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/designer/${sofiles##/*/}
+  #done
+  #for sofiles in /usr/lib/qt/plugins/imageformats/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/imageformats/${sofiles##/*/}
+  #done
+  #for sofiles in /usr/lib/qt/plugins/printsupport/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/printsupport/${sofiles##/*/}
+  #done
+  #for sofiles in /usr/lib/qt/plugins/sqldrivers/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/plugins/sqldrivers/${sofiles##/*/}
+  #done
+  #install -dm755 "$pkgdir"/usr/lib/qcad/{platforminputcontexts,platforms,xcbglintegrations}
+  #for sofiles in /usr/lib/qt/plugins/platforminputcontexts/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/platforminputcontexts/${sofiles##/*/}
+  #done
+  #for sofiles in /usr/lib/qt/plugins/platforms/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/platforms/${sofiles##/*/}
+  #done
+  #for sofiles in /usr/lib/qt/plugins/xcbglintegrations/*.so
+  #do
+    #ln -sf ${sofiles} "$pkgdir"/usr/lib/qcad/xcbglintegrations/${sofiles##/*/}
+  #done
 
   install -Dm644 scripts/qcad_icon.png "$pkgdir"/usr/share/pixmaps/qcad_icon.png
   install -Dm644 qcad.desktop "$pkgdir"/usr/share/applications/qcad.desktop
