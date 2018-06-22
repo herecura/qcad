@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=qcad
-pkgver=3.20.2.0
+pkgver=3.21.0.0
 pkgrel=1
 pkgdesc='A 2D CAD package based upon Qt'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('qt5-script' 'qt5-svg' 'gcc-libs' 'qt5-xmlpatterns' 'qt5-tools')
 makedepends=('glu')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qcad/qcad/archive/v${pkgver}.tar.gz")
-sha512sums=('4cfdf4ab0cb35b78ebe6dd6287ecd5405bcd708f5603e4d23c43b5fd4ccfd19ec2cf37f301f255310ab39f20b7463018fe510e9696825f0293f8a795275ad593')
+sha512sums=('ddabe5a1d3ffe2a745e84a4afffe4620f41c4f93eb56d16d0159a8d8998fbc47cec033b1d41195e61c4d867ea4f5e5b4c77bb72916c10d0eebf9a35a9b929373')
 
 prepare() {
   rm *.tar.gz
