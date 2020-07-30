@@ -6,7 +6,7 @@
 
 pkgname=qcad
 pkgver=3.24.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A 2D CAD package based upon Qt'
 arch=('x86_64')
 url="https://www.qcad.org"
@@ -21,7 +21,7 @@ sha512sums=('04c625c3e4900f8c5e2f907b43e9be96ad4f08b553b3b05cd2acbc7e3d8131fb747
 prepare() {
   rm *.tar.gz
   cd qcad-$pkgver
-  sed -e 's|$${QT_VERSION}|5.14.2|g' \
+  sed -e 's|$${QT_VERSION}|5.5.0|g' \
       -i src/3rdparty/3rdparty.pro # Don't require specific Qt version
   patch -p1 -i "$srcdir/RRulerQt.patch"
 }
